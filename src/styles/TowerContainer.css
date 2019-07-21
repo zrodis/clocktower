@@ -1,0 +1,45 @@
+.TowerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 50%;
+  height: 100%;
+
+
+  overflow: hidden;
+}
+
+.foreground{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  width: 50%;
+
+  height:100%;
+}
+
+.background {
+  position: absolute;
+  background-color: #6190f1;
+  width: 50%;
+
+  height:100%;
+}
+
+@media all and (max-width: 600px) {
+  .TowerContainer {
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+
+  }
+
+  .foreground, .background{
+    width: 100%;
+
+    height: 45vh;
+  }
+
+}

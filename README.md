@@ -1,68 +1,31 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Zach's Clocktower
 
-In the project directory, you can run:
+The year is 3009. London was bombed into dust during World War VII, but the remnants of humanity have managed to rebuild. The mysteries of analog clocks have long been forgotten and Big Ben was re-created with a giant LED display.
 
-### `npm start`
+### notes
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+• I deviated a bit by trying to create inputs that would prevent the user from using the wrong format. I feel it's a more natural solution in React.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+• The tests cases from the original notes are in src/tests/dingcount.test.js and can be run using `npm run tests`.
 
-### `npm test`
+• It works on mobile, although I only tested on my own phone, an iPhone6.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+• The sky changes according to the time!
 
-### `npm run build`
+## Original KBRA notes
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### User Story
+As a clock enthusiast, I want to know how many times a clock tower will ring its bell between two given times, so that I can plan to sing along.
+### Background
+A clock tower will ring its bell every hour, on the hour, a number of times equal to the number indicated by the hours hand.
+### Example
+At 3pm, the clock tower will ring the bell three times. At midnight, it will ring the bell 12 times.
+Technical Specification
+• I should be able to input a start time and end time into the browser. Both times will be in twenty-four hour notation, such as 12:00 for noon and 15:30 for half-past three in the afternoon.
+• If a user enters a number that is not in the expected format, an error message should be displayed.
+• The UI should display the total number of times the clock tower will ring its bell between the two provided times.
+### Notes
+1. If either time is on the hour (ex. 14:00) then you should count the bell rings that would occur at that hour.
+2. If both times are equal, treat it as if twenty-four hours will pass and not that the two times are the same time on the same day.

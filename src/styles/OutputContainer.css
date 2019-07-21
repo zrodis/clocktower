@@ -1,0 +1,43 @@
+.OutputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 100%;
+  background-color: #222;
+  z-index: 20;
+  font-size: 1.5em;
+  border-bottom: 1px solid #fff;
+  border-radius: 0px 0px 10px 10px;
+
+}
+
+.outputText{
+  color: #eee;
+  /* transition: 500ms; */
+}
+.guideText{
+  color: #666;
+}
+
+.largeHighlighText{
+  font-size: 2em;
+  color: yellow;
+}
+
+@media all and (max-width: 600px) {
+
+  .OutputContainer {
+    position: fixed;
+    top:0px;
+    left: 0px;
+    height: 15vh;
+
+    font-size: 1em;
+  }
+
+  .largeHighlighText{
+    font-size: 1.5em;
+    color: yellow;
+  }
+}
