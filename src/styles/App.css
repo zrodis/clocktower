@@ -19,9 +19,7 @@
 @media all and (max-width: 600px) {
   .mainContainer{
     flex-direction: column;
-    padding-top: 50px;
+    padding-top: 100px;
   }
-  .outputContainer {
-    font-size: 1em;
-  }
+
 }
