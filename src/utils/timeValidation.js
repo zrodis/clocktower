@@ -21,9 +21,6 @@ function placeColon (timeInput) {
     timeInput = timeInput.slice(0, 2) + ":" + timeInput.slice(2)
   }
 
-  if(colon === 0 && timeInput.length >= 3) {
-    timeInput = timeInput.slice(1, 2) + ":" + timeInput.slice(1)
-  }
   if(colon > -1 && timeInput.length === 5){
     timeInput = timeInput.split(':').join('')
     timeInput = timeInput.slice(0,2) +':' + timeInput.slice(2)
@@ -38,7 +35,6 @@ function restrictLength (timeInput) {
 
     hr = limitTo(hr, 23)
     hr = formatZeroString(hr)
-
     min = limitTo(min, 59)
     min = formatZeroString(min)
 
