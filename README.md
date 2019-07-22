@@ -6,13 +6,13 @@ The year is 3009. London was bombed into dust during World War VII, but the remn
 
 ### notes
 
-• I deviated a bit by trying to create inputs that would prevent the user from using the wrong format. I feel it's a more natural solution in React.
+• The sky changes according to the time!
+
+• I deviated from one bit of the instructions by creating inputs that would prevent the user from using the wrong format, instead of using explicit error messages.
 
 • The tests cases from the original notes are in src/tests/dingcount.test.js and can be run using `npm run tests`.
 
 • It works on mobile, although I only tested on my own phone, an iPhone6.
-
-• The sky changes according to the time!
 
 ## Original KBRA notes
 

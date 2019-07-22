@@ -1,5 +1,6 @@
 const formatZeroString = (n) => n.toString().length === 1 ? "0" + n : n;
 const limitTo = (n, l) => n > l ? l : n;
+const TIME_STR_VALID = /(^[012]\d:[0-5]\d$)|(^\d:[0-5]\d$)/
 
 function timeStrToObj (timeStr = "00:00") {
   let hour = parseInt(timeStr.split(":")[0])
@@ -15,9 +16,17 @@ function restrictCharacters (timeInput) {
 
 function placeColon (timeInput) {
   const colon = timeInput.search(':')
-  if(colon >= 3 || (colon === -1 && timeInput.length >= 3)) {
+  if(colon >= 3 || (colon === -1 && timeInput.length >= 3) ) {
     timeInput = timeInput.replace(":", '')
     timeInput = timeInput.slice(0, 2) + ":" + timeInput.slice(2)
+  }
+
+  if(colon === 0 && timeInput.length >= 3) {
+    timeInput = timeInput.slice(1, 2) + ":" + timeInput.slice(1)
+  }
+  if(colon > -1 && timeInput.length === 5){
+    timeInput = timeInput.split(':').join('')
+    timeInput = timeInput.slice(0,2) +':' + timeInput.slice(2)
   }
   return timeInput
 }
@@ -38,15 +47,20 @@ function restrictLength (timeInput) {
   return timeInput
 }
 
-function timeValidation (timeInput) {
+function timeInputFormat (timeInput) {
   timeInput = restrictCharacters(timeInput)
   timeInput = placeColon (timeInput)
   timeInput = restrictLength(timeInput)
-
   return timeInput
+}
+
+function validateTimes(times){
+  return times.every( (item) => item.match(TIME_STR_VALID))
 }
 
 export {
   timeStrToObj,
-  timeValidation,
+  timeInputFormat,
+  TIME_STR_VALID,
+  validateTimes
 }

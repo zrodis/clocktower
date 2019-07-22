@@ -1,5 +1,5 @@
 import React from "react";
-import { timeValidation } from '../utils/timeValidation'
+import { timeInputFormat } from '../utils/timeValidation'
 import '../styles/ClockTower.css'
 
 
@@ -11,7 +11,7 @@ class ClockTower extends React.Component {
   }
 
   handleChange = (evt) => {
-    let timeInput = timeValidation(evt.target.value)
+    let timeInput = timeInputFormat(evt.target.value)
     let timeValid = timeInput.match(/(^[012]\d:[0-5]\d$) | (^\d:[0-5]\d$)/) ? true : false;
 
     this.setState({

@@ -3,19 +3,18 @@ import ClockTower from './components/ClockTower'
 import OutputContainer from './components/OutputContainer'
 import TowerContainer from './components/TowerContainer'
 import dingCounter from './utils/dingCounter'
+import {TIME_STR_VALID, validateTimes} from './utils/timeValidation'
 import './styles/App.css';
 
 class App extends React.Component {
 
   state = {
-    towerTimes:["00:00", "12:00"],
-    dingCount: 0,
+    towerTimes:[":", ":"],
+    dingCount: '',
   }
 
   validateClockTowers = (inputTime, id) => {
-    const timeValid = inputTime.match(/(^[012]\d:[0-5]\d$)|(^\d:[0-5]\d$)/) ? true : false;
-
-    if( timeValid ){
+    if( validateTimes([inputTime])){
       this.setState( (prevState) => {
         let newTimes = [...prevState.towerTimes]
             newTimes[id] = inputTime
@@ -23,20 +22,14 @@ class App extends React.Component {
           towerTimes: newTimes
         }
       }, () => {
-        this.setState({
-          dingCount: dingCounter(this.state.towerTimes)
-        })
+        validateTimes(this.state.towerTimes) &&
+          this.setState({ dingCount: dingCounter(this.state.towerTimes) })
       })
     } else{
       this.setState({ dingCount: '' })
     }
   }
 
-  componentDidMount(){
-    this.setState({
-      dingCount: dingCounter(this.state.towerTimes)
-    })
-  }
 
   render() {
     return (
@@ -46,25 +39,21 @@ class App extends React.Component {
           towerTimes={this.state.towerTimes}
         />
         <div className="mainContainer">
+
           {this.state.towerTimes.map( (time, inx) => {
-            return (
-              <React.Fragment key={inx}>
-                <TowerContainer
-                  currentTime={this.state.towerTimes[inx]}
-                >
+            return (<React.Fragment key={inx}>
+
+                <TowerContainer currentTime={this.state.towerTimes[inx]}>
                   <ClockTower id={inx}
                     defaultTime={this.state.towerTimes[inx]}
                     validateClockTowers={this.validateClockTowers}
                   />
                 </TowerContainer>
-              </React.Fragment>
-            )
+
+            </React.Fragment>)
           })}
 
-
         </div>
-
-
       </div>
     );
   }
